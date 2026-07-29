@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amaze PMS
+
+A premium dark‑mode hotel Property Management System built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, and **NextAuth** for secure authentication. This project showcases a sleek UI with glass‑morphism, framer‑motion animations, and AI‑enabled features.
+
+## Features
+- Dark‑mode only design with vibrant neon accents
+- Room catalog, booking flow, and detailed management dashboards
+- Authentication (Google OAuth & credentials) via NextAuth
+- MongoDB integration with Mongoose models (`User`, `Room`, `Booking`)
+- AI‑powered recommendations (Gemini/Claude) – ready to plug in
+- Real‑time toast notifications and custom cursor interactions
+
+## Getting Started
+```bash
+npm install
+# ensure .env.local has MONGODB_URI, NEXTAUTH_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+## Author
+**Ashik** – Developed the full‑stack integration, premium UI, and AI features.
+
+---
+*Built with love for modern hospitality tech.*
 
 ## Getting Started
 
