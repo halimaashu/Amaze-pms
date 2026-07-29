@@ -2,11 +2,9 @@
 
 import React, { useState } from "react";
 import { Sparkles, Wrench, Shield, Key, ArrowRight, Check } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
 
 export default function Services() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const { theme } = useTheme();
 
   const services = [
     {
@@ -72,20 +70,20 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative py-24 bg-slate-50 dark:bg-[#060913] overflow-hidden transition-colors duration-300">
+    <section id="services" className="relative py-24 bg-[#040711] overflow-hidden">
       {/* Background glow lines */}
       <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-sky-500/10 to-transparent pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <h2 className="text-xs font-semibold tracking-widest text-sky-500 dark:text-sky-400 uppercase">
+          <h2 className="text-xs font-semibold tracking-widest text-sky-400 uppercase">
             Services Portfolio
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
             Integrated Property Solutions
           </h3>
-          <p className="text-slate-600 dark:text-slate-400 text-base">
+          <p className="text-slate-400 text-base">
             We provide a complete vertical of facilities management solutions designed to secure, operate, and maintain your corporate real estate assets.
           </p>
         </div>
@@ -95,7 +93,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative rounded-2xl glass-panel p-8 border border-slate-200 dark:border-white/5 bg-slate-100/50 dark:bg-slate-900/20 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-200/50 dark:hover:bg-[#0c1225]"
+              className="group relative rounded-2xl glass-panel p-8 border border-white/5 bg-slate-900/30 transition-all duration-300 hover:-translate-y-1 hover:bg-[#0b1224]"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
@@ -104,8 +102,8 @@ export default function Services() {
                     ? `0 15px 35px -5px ${service.glowColor}`
                     : "none",
                 borderColor: hoveredIndex === index 
-                  ? (theme === "light" ? "rgba(2,132,199,0.3)" : "rgba(255,255,255,0.15)") 
-                  : (theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.05)"),
+                  ? "rgba(255,255,255,0.18)" 
+                  : "rgba(255,255,255,0.06)",
               }}
             >
               {/* Backlight on hover */}
@@ -117,29 +115,29 @@ export default function Services() {
                 <div>
                   {/* Icon & Title */}
                   <div className="flex items-center space-x-4 mb-6">
-                    <div className="p-3 bg-slate-200/50 dark:bg-white/5 rounded-xl border border-slate-300/50 dark:border-white/10 group-hover:bg-slate-300/80 dark:group-hover:bg-white/10 transition-colors">
+                    <div className="p-3 bg-white/5 rounded-xl border border-white/10 group-hover:bg-white/10 transition-colors">
                       {service.icon}
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                      <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                         {service.tagline}
                       </p>
-                      <h4 className="text-xl font-bold text-slate-900 dark:text-white transition-colors">
+                      <h4 className="text-xl font-bold text-white transition-colors">
                         {service.title}
                       </h4>
                     </div>
                   </div>
 
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 font-medium">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6 font-medium">
                     {service.desc}
                   </p>
 
                   {/* Bullet Points */}
                   <ul className="space-y-3 mb-8">
                     {service.bullets.map((bullet, bulletIdx) => (
-                      <li key={bulletIdx} className="flex items-start space-x-2.5 text-xs text-slate-700 dark:text-slate-300">
-                        <span className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full bg-slate-200/60 dark:bg-white/5 flex items-center justify-center border border-slate-300/60 dark:border-white/10">
-                          <Check className="w-2.5 h-2.5 text-sky-500 dark:text-sky-400" />
+                      <li key={bulletIdx} className="flex items-start space-x-2.5 text-xs text-slate-300">
+                        <span className="flex-shrink-0 mt-0.5 w-4 h-4 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                          <Check className="w-2.5 h-2.5 text-sky-400" />
                         </span>
                         <span className="font-medium">{bullet}</span>
                       </li>
@@ -148,10 +146,10 @@ export default function Services() {
                 </div>
 
                 {/* Learn More Button */}
-                <div className="pt-4 border-t border-slate-200 dark:border-white/5">
+                <div className="pt-4 border-t border-white/5">
                   <a
                     href="#contact"
-                    className="inline-flex items-center space-x-2 text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-white transition-colors"
+                    className="inline-flex items-center space-x-2 text-xs font-bold text-sky-400 hover:text-white transition-colors"
                   >
                     <span>Request Quotation</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

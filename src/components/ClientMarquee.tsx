@@ -25,10 +25,10 @@ export default function ClientMarquee() {
         </p>
       </div>
 
-      <Marquee speed={30} gradient={true} gradientColor="black" pauseOnHover={true}>
+      <Marquee speed={30} gradient={false} pauseOnHover={true}>
         {clients.map((client, idx) => (
           <div key={idx} className="flex items-center space-x-2 mx-12 text-slate-400 hover:text-white transition-colors duration-300">
-            <Building className="w-4 h-4 text-sky-500/80" />
+            <Building className="w-4 h-4 text-sky-400" />
             <span className="text-sm font-bold tracking-wide uppercase font-mono">
               {client}
             </span>

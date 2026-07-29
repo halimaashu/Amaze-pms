@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Building2, Home, Landmark, ShoppingBag, HeartPulse, GraduationCap, Percent, Zap, Users } from "lucide-react";
+import { Building2, Home, HeartPulse, GraduationCap, Percent, Zap, Users } from "lucide-react";
 
 export default function Sectors() {
   const [activeTab, setActiveTab] = useState(0);
 
   const sectors = [
     {
-      icon: <Building2 className="w-5 h-5" />,
+      icon: <Building2 className="w-5 h-5 text-sky-400" />,
       label: "IT Parks & Malls",
       title: "Commercial & High-Footprint Arenas",
       desc: "IT parks and premium retail spaces require 24/7 technical uptime, seamless crowd management, and highly professional soft services to sustain brand reputation.",
@@ -26,7 +26,7 @@ export default function Sectors() {
       glow: "from-sky-500/10 to-transparent",
     },
     {
-      icon: <Home className="w-5 h-5" />,
+      icon: <Home className="w-5 h-5 text-emerald-400" />,
       label: "Residential Communities",
       title: "Premium Townships & Clubhouses",
       desc: "High-end residential projects deserve safety, prompt resolution of resident maintenance tickets, and clean, lush green landscaping.",
@@ -44,7 +44,7 @@ export default function Sectors() {
       glow: "from-emerald-500/10 to-transparent",
     },
     {
-      icon: <HeartPulse className="w-5 h-5" />,
+      icon: <HeartPulse className="w-5 h-5 text-rose-400" />,
       label: "Healthcare",
       title: "Hospitals & Diagnostics Centers",
       desc: "Healthcare setups require clinical hygiene levels, 100% sterile housekeeping, and uninterruptible power backup management.",
@@ -62,7 +62,7 @@ export default function Sectors() {
       glow: "from-rose-500/10 to-transparent",
     },
     {
-      icon: <GraduationCap className="w-5 h-5" />,
+      icon: <GraduationCap className="w-5 h-5 text-amber-400" />,
       label: "Educational Institutes",
       title: "Universities, Schools & Hostels",
       desc: "Educational campuses need robust security protocols, student-friendly cleaning staffs, and mass dining/canteen maintenance support.",
@@ -82,20 +82,20 @@ export default function Sectors() {
   ];
 
   return (
-    <section id="sectors" className="relative py-24 bg-slate-100 dark:bg-[#070b19] overflow-hidden border-t border-b border-slate-200 dark:border-white/5 transition-colors duration-300">
+    <section id="sectors" className="relative py-24 bg-[#070b19] overflow-hidden border-t border-b border-white/5">
       {/* Background glow spot */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-r from-emerald-500/5 to-sky-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <h2 className="text-xs font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase">
+          <h2 className="text-xs font-semibold tracking-widest text-emerald-400 uppercase">
             Industry Verticals
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+          <h3 className="text-3xl sm:text-4xl font-extrabold text-white">
             Sectors We Elevate
           </h3>
-          <p className="text-slate-600 dark:text-slate-400 text-base">
+          <p className="text-slate-400 text-base">
             From critical sterile healthcare environments to high-footprint commercial complexes, we customize our facility plans to fit your industry.
           </p>
         </div>
@@ -106,10 +106,10 @@ export default function Sectors() {
             <button
               key={index}
               onClick={() => setActiveTab(index)}
-              className={`flex items-center space-x-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
+              className={`flex items-center space-x-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer ${
                 activeTab === index
-                  ? "bg-gradient-to-r from-sky-500/20 to-emerald-500/20 border border-sky-500/40 text-slate-900 dark:text-white shadow-lg"
-                  : "border border-slate-200 dark:border-white/5 bg-slate-200/40 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:border-slate-300 dark:hover:border-white/10"
+                  ? "bg-gradient-to-r from-sky-500/20 to-emerald-500/20 border border-sky-500/40 text-white shadow-lg shadow-sky-500/10"
+                  : "border border-white/5 bg-slate-900/40 text-slate-400 hover:text-white hover:border-white/15"
               }`}
             >
               {sector.icon}
@@ -119,32 +119,32 @@ export default function Sectors() {
         </div>
 
         {/* Active Tab Panel */}
-        <div className="relative rounded-2xl glass-panel p-8 md:p-12 border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-900/20 overflow-hidden transition-all duration-500">
+        <div className="relative rounded-2xl glass-panel p-8 md:p-12 border border-white/10 bg-slate-900/30 overflow-hidden transition-all duration-500">
           {/* Inner ambient light */}
           <div className={`absolute -right-20 -bottom-20 w-80 h-80 bg-gradient-to-tr ${sectors[activeTab].glow} blur-3xl pointer-events-none`}></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
             {/* Left: Info */}
             <div className="lg:col-span-7 space-y-6">
-              <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              <h4 className="text-2xl font-extrabold text-white">
                 {sectors[activeTab].title}
               </h4>
-              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-medium">
+              <p className="text-slate-300 text-sm leading-relaxed font-medium">
                 {sectors[activeTab].desc}
               </p>
 
               {/* Scope deliverables */}
               <div className="space-y-3">
-                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400">
                   Key Scope Deliverables
                 </h5>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {sectors[activeTab].deliverables.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start space-x-2 text-xs text-slate-700 dark:text-slate-300 p-2.5 rounded-lg bg-slate-200/50 dark:bg-slate-900/40 border border-slate-300/50 dark:border-white/5"
+                      className="flex items-start space-x-2 text-xs text-slate-300 p-2.5 rounded-lg bg-slate-900/50 border border-white/5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 flex-shrink-0"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0"></span>
                       <span className="font-medium">{item}</span>
                     </div>
                   ))}
@@ -154,8 +154,8 @@ export default function Sectors() {
 
             {/* Right: Metrics / Performance Indicators */}
             <div className="lg:col-span-5 flex flex-col justify-center space-y-4">
-              <div className="bg-slate-200/70 dark:bg-slate-950/80 rounded-xl border border-slate-300/50 dark:border-white/5 p-6 space-y-6">
-                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-center pb-3 border-b border-slate-300/50 dark:border-white/5">
+              <div className="bg-slate-950/80 rounded-xl border border-white/5 p-6 space-y-6">
+                <h5 className="text-xs font-bold uppercase tracking-wider text-slate-400 text-center pb-3 border-b border-white/5">
                   Performance Benchmarks
                 </h5>
 
@@ -163,12 +163,12 @@ export default function Sectors() {
                   {sectors[activeTab].metrics.map((metric, idx) => (
                     <div key={idx} className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-slate-300/50 dark:bg-white/5 rounded-lg border border-slate-400/30 dark:border-white/10">
+                        <div className="p-2 bg-white/5 rounded-lg border border-white/10">
                           {metric.icon}
                         </div>
-                        <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{metric.name}</span>
+                        <span className="text-xs font-semibold text-slate-300">{metric.name}</span>
                       </div>
-                      <span className="text-sm font-bold text-slate-800 dark:text-white bg-slate-300/40 dark:bg-white/5 px-3 py-1 rounded-md border border-slate-300/50 dark:border-white/5">
+                      <span className="text-sm font-bold text-white bg-white/5 px-3 py-1 rounded-md border border-white/5">
                         {metric.val}
                       </span>
                     </div>

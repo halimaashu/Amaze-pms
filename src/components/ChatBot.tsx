@@ -85,9 +85,9 @@ export default function ChatBot() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open AI Chat"
-        className={`fixed bottom-6 right-6 z-[60] w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 group ${
+        className={`fixed bottom-6 right-6 z-[60] w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 group cursor-pointer ${
           isOpen
-            ? "bg-slate-700 dark:bg-slate-700 rotate-0"
+            ? "bg-slate-800 rotate-0"
             : "bg-gradient-to-tr from-sky-500 to-emerald-500 hover:scale-110 hover:shadow-sky-500/40"
         }`}
       >
@@ -107,7 +107,7 @@ export default function ChatBot() {
           isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-90 opacity-0 pointer-events-none"
         }`}
       >
-        <div className="rounded-2xl border border-white/10 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col h-[500px] bg-white dark:bg-[#0a0f1e]">
+        <div className="rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[500px] bg-[#0a0f1e]">
           {/* Header */}
           <div className="px-5 py-4 bg-gradient-to-r from-sky-500 to-emerald-500 flex items-center space-x-3">
             <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -130,7 +130,7 @@ export default function ChatBot() {
                   className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${
                     msg.role === "user"
                       ? "bg-sky-500 text-white rounded-br-sm"
-                      : "bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 rounded-bl-sm border border-slate-200 dark:border-white/5"
+                      : "bg-slate-800/80 text-slate-200 rounded-bl-sm border border-white/5"
                   }`}
                 >
                   {msg.role === "bot" && (
@@ -142,7 +142,7 @@ export default function ChatBot() {
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-white/5 px-4 py-3 rounded-2xl rounded-bl-sm">
+                <div className="bg-slate-800/80 border border-white/5 px-4 py-3 rounded-2xl rounded-bl-sm">
                   <div className="flex space-x-1.5">
                     <span className="w-2 h-2 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
                     <span className="w-2 h-2 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
@@ -154,7 +154,7 @@ export default function ChatBot() {
           </div>
 
           {/* Input */}
-          <div className="p-3 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#060913]">
+          <div className="p-3 border-t border-white/5 bg-[#060913]">
             <div className="flex items-center space-x-2">
               <input
                 type="text"
@@ -162,12 +162,12 @@ export default function ChatBot() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about services, pricing..."
-                className="flex-1 px-4 py-2.5 rounded-xl text-xs bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-xl text-xs bg-slate-800/60 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 transition-colors"
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim()}
-                className="p-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-500 text-white hover:opacity-90 transition-opacity disabled:opacity-40"
+                className="p-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-500 text-white hover:opacity-90 transition-opacity disabled:opacity-40 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
               </button>

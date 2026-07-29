@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Shield, Sun, Moon, LogIn, LogOut, User } from "lucide-react";
+import { Menu, X, Shield, LogIn, LogOut, User } from "lucide-react";
 import TopMarqueeBar from "./TopMarqueeBar";
-import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,15 +77,6 @@ export default function Navbar() {
                 </a>
               ))}
 
-              {/* Theme Toggle */}
-              <button
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-                className="p-2 rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-sky-500/30 transition-all hover-scale"
-              >
-                {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </button>
-
               {/* Login/Logout */}
               <button
                 onClick={() => setIsLoggedIn(!isLoggedIn)}
@@ -124,13 +113,6 @@ export default function Navbar() {
 
             {/* Mobile controls */}
             <div className="lg:hidden flex items-center space-x-2">
-              <button
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-                className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-              >
-                {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--card-bg)] transition-colors"
