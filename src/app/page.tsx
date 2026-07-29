@@ -3,6 +3,7 @@ import BannerCarousel from "@/components/BannerCarousel";
 import Hero from "@/components/Hero";
 import ClientMarquee from "@/components/ClientMarquee";
 import Services from "@/components/Services";
+import FeaturedRooms from "@/components/FeaturedRooms";
 import Sectors from "@/components/Sectors";
 import Heritage from "@/components/Heritage";
 import TechSpotlight from "@/components/TechSpotlight";
@@ -20,6 +21,7 @@ export default function Home() {
         <Hero />
         <ClientMarquee />
         <Services />
+        <FeaturedRooms />
         <Sectors />
         <Heritage />
         <TechSpotlight />

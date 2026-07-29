@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import ThemeProvider from "@/components/ThemeProvider";
+import CustomCursor from "@/components/CustomCursor";
 
-// Clean, corporate, highly legible — industry standard
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -13,7 +13,6 @@ const inter = Inter({
   display: "swap",
 });
 
-// Monospace for terminal/code panels only
 const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
@@ -21,9 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amaze PMS | Premium Integrated Property & Facility Management",
-  description: "Founded by an Indian Navy veteran, Amaze PMS delivers end-to-end soft services, MEP engineering, security guarding, and smart utilities management with military precision and discipline.",
-  keywords: "Property Management, Facility Management, Housekeeping Services, MEP Services, Security Guarding Cyberabad, Action Group subsidiary",
+  title: "Amaze PMS | Premium Integrated Property & Hotel Management",
+  description: "Founded by an Indian Navy veteran, Amaze PMS delivers end-to-end hotel operations, luxury suite maintenance, MEP engineering, security guarding, and smart utilities management.",
+  keywords: "Hotel Management, Property Management, Luxury Suites, Facility Management, Housekeeping Services, MEP Services, Security Guarding",
 };
 
 export default function RootLayout({
@@ -37,6 +36,28 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3500,
+            style: {
+              background: "#090e20",
+              color: "#f8fafc",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              fontSize: "12px",
+              fontWeight: "600",
+              borderRadius: "14px",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            },
+            success: {
+              iconTheme: {
+                primary: "#10b981",
+                secondary: "#090e20",
+              },
+            },
+          }}
+        />
+        <CustomCursor />
         <ThemeProvider>
           <LenisProvider>{children}</LenisProvider>
         </ThemeProvider>
@@ -44,4 +65,3 @@ export default function RootLayout({
     </html>
   );
 }
-
