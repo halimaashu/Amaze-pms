@@ -1,4 +1,4 @@
-"use client";
+
 
 import mongoose, { Schema, Document, Model } from "mongoose";
 
