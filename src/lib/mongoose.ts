@@ -1,4 +1,5 @@
 "use server";
+import mongoose, { ConnectOptions } from "mongoose";
 
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
@@ -25,7 +26,7 @@ export async function dbConnect() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
-    } as mongoose.ConnectOptions;
+    } as ConnectOptions;
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       return mongoose;
