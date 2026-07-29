@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Shield, LogIn, UserPlus } from "lucide-react";
+import { Menu, X, Shield, LogIn, UserPlus, LogOut, LayoutDashboard } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
 import TopMarqueeBar from "./TopMarqueeBar";
 
 export default function Navbar() {
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -78,22 +80,42 @@ export default function Navbar() {
                 </a>
               ))}
 
-              {/* Login / Sign Up */}
-              <Link
-                href="/login"
-                className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-white/10 bg-slate-900/60 text-slate-300 hover:text-white hover:border-sky-500/40 transition-all duration-300 hover-scale"
-              >
-                <LogIn className="w-3.5 h-3.5 text-sky-400" />
-                <span>Sign In</span>
-              </Link>
-
-              <Link
-                href="/signup"
-                className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-all duration-300 hover-scale"
-              >
-                <UserPlus className="w-3.5 h-3.5" />
-                <span>Create Account</span>
-              </Link>
+              {/* Login / Sign Up / Dashboard */}
+              {!session ? (
+                <>
+                  <Link
+                    href="/login"
+                    className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-white/10 bg-slate-900/60 text-slate-300 hover:text-white hover:border-sky-500/40 transition-all duration-300"
+                  >
+                    <LogIn className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Sign In</span>
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-all duration-300"
+                  >
+                    <UserPlus className="w-3.5 h-3.5" />
+                    <span>Create Account</span>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-sky-500/30 bg-sky-500/10 text-sky-400 hover:bg-sky-500/20 transition-all duration-300"
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5" />
+                    <span>Dashboard</span>
+                  </Link>
+                  <button
+                    onClick={() => signOut()}
+                    className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold border border-rose-500/30 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-all duration-300"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    <span>Sign Out</span>
+                  </button>
+                </>
+              )}
 
               {/* CTA */}
               <a
@@ -157,22 +179,44 @@ export default function Navbar() {
 
             {/* Mobile Auth Buttons */}
             <div className="mt-6 space-y-2">
-              <Link
-                href="/signup"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-sky-500 to-emerald-500 text-white shadow-md"
-              >
-                <UserPlus className="w-4 h-4" />
-                <span>Create Account</span>
-              </Link>
-              <Link
-                href="/login"
-                onClick={() => setIsOpen(false)}
-                className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold border border-white/10 bg-slate-900 text-slate-300 hover:text-white"
-              >
-                <LogIn className="w-4 h-4" />
-                <span>Sign In</span>
-              </Link>
+              {!session ? (
+                <>
+                  <Link
+                    href="/signup"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold bg-gradient-to-r from-sky-500 to-emerald-500 text-white shadow-md"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    <span>Create Account</span>
+                  </Link>
+                  <Link
+                    href="/login"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold border border-white/10 bg-slate-900 text-slate-300 hover:text-white"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    <span>Sign In</span>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20"
+                  >
+                    <LayoutDashboard className="w-4 h-4" />
+                    <span>Dashboard</span>
+                  </Link>
+                  <button
+                    onClick={() => { signOut(); setIsOpen(false); }}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm font-bold border border-white/10 bg-slate-900 text-rose-400 hover:text-white"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Sign Out</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
